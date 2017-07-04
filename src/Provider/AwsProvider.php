@@ -186,10 +186,11 @@ class AwsProvider extends AbstractProvider
             }
 
             $message    = [
-                'default'   => $this->getNameWithPrefix(),
+                'default'   => json_encode($message),
                 'sqs'       => json_encode($message),
-                'http'      => $this->getNameWithPrefix(),
-                'https'     => $this->getNameWithPrefix(),
+                'http'      => json_encode($message),
+                'https'     => json_encode($message),
+                'email'     => json_encode($message),
             ];
 
             $result = $this->sns->publish([
